@@ -20,14 +20,23 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
 
+  static List<Widget> _screens = <Widget>[
+    Container(color: Colors.white),
+    Container(color: Colors.red),
+    Container(color: Colors.blue),
+    Container(color: Colors.green),
+    Container(color: Colors.amber),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Code_Split & Nav Bar'),
       ),
-      body: Container(
-          color: Colors.lightBlueAccent
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
           items:btmNavItems,
@@ -47,7 +56,4 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-
-
-
 }

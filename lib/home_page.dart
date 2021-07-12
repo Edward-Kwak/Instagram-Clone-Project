@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_split/feed_screen.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static List<Widget> _screens = <Widget>[
-    Container(color: Colors.white),
+    FeedScreen(),
     Container(color: Colors.red),
     Container(color: Colors.blue),
     Container(color: Colors.green),
@@ -31,9 +32,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Code_Split & Nav Bar'),
-      ),
       body: IndexedStack(
         index: _selectedIndex,
         children: _screens,

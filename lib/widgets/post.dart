@@ -13,9 +13,12 @@ class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _postHeader(),
         _postImage(),
+        _postActions(),
+        _postLikes(),
       ],
     );
   }
@@ -58,6 +61,49 @@ class Post extends StatelessWidget {
       placeholder: (BuildContext context, String url) {
         return CustomProgressIndicator(containerSize: size!.width,);
       },
+    );
+  }
+
+  Row _postActions() {
+    return Row(
+      children: <Widget>[
+        IconButton(
+          onPressed: () {},
+          icon: ImageIcon(
+              AssetImage('assets/images/like.png'),
+              color: Colors.black
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: ImageIcon(
+              AssetImage('assets/images/comment.png'),
+              color: Colors.black
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: ImageIcon(
+              AssetImage('assets/images/direct_message.png'),
+              color: Colors.black
+          ),
+        ),
+        Spacer(),
+        IconButton(
+          onPressed: () {},
+          icon: ImageIcon(
+              AssetImage('assets/images/bookmark.png'),
+              color: Colors.black
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding _postLikes() {
+    return Padding(
+      padding: const EdgeInsets.only(left: common_padding_m),
+      child: Text('좋아요 $index개', style: TextStyle(fontWeight: FontWeight.bold),),
     );
   }
 

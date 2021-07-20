@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_code_split/constants/common_vars.dart';
+import 'package:flutter_code_split/widgets/comments.dart';
 import 'package:flutter_code_split/widgets/custom_progress_indicator.dart';
+import 'package:flutter_code_split/widgets/rounded_profile.dart';
 
 class Post extends StatelessWidget {
   final int index;
@@ -19,6 +21,7 @@ class Post extends StatelessWidget {
         _postImage(),
         _postActions(),
         _postLikes(),
+        _postCaptions(),
       ],
     );
   }
@@ -28,12 +31,7 @@ class Post extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(common_padding_m),
-          child: ClipOval(
-            child: CachedNetworkImage(
-              imageUrl: 'https://picsum.photos/id/${index+30}/100/100',
-              width: common_profile_img_size_s,
-              height: common_profile_img_size_s,),
-          ),
+          child: RoundedProfile(),
         ),
         Expanded(
             child: Text('user$index', style: TextStyle(fontWeight: FontWeight.w500),)),
@@ -104,6 +102,17 @@ class Post extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: common_padding_m),
       child: Text('좋아요 $index개', style: TextStyle(fontWeight: FontWeight.bold),),
+    );
+  }
+
+  Widget _postCaptions() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: common_padding_m, vertical: common_padding_m),
+      child: Comment(
+        userName: 'user_name$index',
+        text: 'i am user number $index',
+        showProfileImg: false,
+      ),
     );
   }
 

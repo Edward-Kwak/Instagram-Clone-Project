@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_split/constants/common_vars.dart';
 import 'package:flutter_code_split/feed_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,6 +32,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    if (size == null) size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,

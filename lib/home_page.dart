@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_code_split/constants/common_vars.dart';
-import 'package:flutter_code_split/feed_screen.dart';
+import 'package:flutter_code_split/screens/feed_screen.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({

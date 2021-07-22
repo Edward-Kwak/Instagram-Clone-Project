@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_code_split/constants/common_vars.dart';
 import 'package:flutter_code_split/screens/feed_screen.dart';
+import 'package:flutter_code_split/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -13,11 +14,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<BottomNavigationBarItem> btmNavItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.home, size: 24.0, color: Colors.orange), label: 'Home', backgroundColor: Colors.greenAccent),
-    BottomNavigationBarItem(icon: Icon(Icons.search, size: 24.0, color: Colors.black), label: 'Search', backgroundColor: Colors.blue),
-    BottomNavigationBarItem(icon: Icon(Icons.backpack, size: 24.0, color: Colors.yellow), label: 'Inventory', backgroundColor: Colors.purple),
-    BottomNavigationBarItem(icon: Icon(Icons.account_circle, size: 24.0, color: Colors.blue), label: 'My', backgroundColor: Colors.white),
-    BottomNavigationBarItem(icon: Icon(Icons.settings, size: 24.0, color: Colors.purple), label: 'Settings', backgroundColor: Colors.grey),
+    BottomNavigationBarItem(icon: Icon(Icons.home, size: common_padding_l, color: Colors.orange), label: '', backgroundColor: Colors.greenAccent),
+    BottomNavigationBarItem(icon: Icon(Icons.search, size: common_padding_l, color: Colors.black), label: '', backgroundColor: Colors.blue),
+    BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined, size: common_padding_l, color: Colors.yellow), label: '', backgroundColor: Colors.purple),
+    BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined, size: common_padding_l, color: Colors.blue), label: '', backgroundColor: Colors.white),
+    BottomNavigationBarItem(icon: Icon(Icons.person_rounded, size: common_padding_l, color: Colors.purple), label: '', backgroundColor: Colors.grey),
   ];
 
   int _selectedIndex = 0;
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     Container(color: Colors.red),
     Container(color: Colors.blue),
     Container(color: Colors.green),
-    Container(color: Colors.amber),
+    ProfileScreen(),
   ];
 
   @override
@@ -41,8 +42,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           items:btmNavItems,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.red,
           currentIndex: _selectedIndex,

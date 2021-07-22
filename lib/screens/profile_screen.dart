@@ -9,8 +9,12 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SafeArea(
-        child: Column(children: <Widget>[
-          _appbar(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _appbar(),
+            _username(),
+            _userBio(),
         ],),
       ),
     );
@@ -26,4 +30,16 @@ class ProfileScreen extends StatelessWidget {
       Expanded(child: Text('user', textAlign: TextAlign.center,)),
     ],);
   }
+
+  Widget _username() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: common_padding_m),
+      child: Text('user name', style: TextStyle(fontWeight: FontWeight.bold),),
+    );
+  }
+
+  Widget _userBio() {
+    return Text("Developed By Edward.", style: TextStyle(fontWeight: FontWeight.w400),);
+  }
+
 }

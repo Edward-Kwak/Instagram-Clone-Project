@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_code_split/constants/common_vars.dart';
+import 'package:flutter_code_split/widgets/profile_body.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -13,8 +14,7 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _appbar(),
-            _username(),
-            _userBio(),
+            ProfileBody(),
         ],),
       ),
     );
@@ -31,15 +31,6 @@ class ProfileScreen extends StatelessWidget {
     ],);
   }
 
-  Widget _username() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: common_padding_m),
-      child: Text('user name', style: TextStyle(fontWeight: FontWeight.bold),),
-    );
-  }
 
-  Widget _userBio() {
-    return Text("Developed By Edward.", style: TextStyle(fontWeight: FontWeight.w400),);
-  }
 
 }

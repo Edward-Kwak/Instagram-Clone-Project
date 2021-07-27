@@ -9,6 +9,7 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
+  final double selectionBarHeight = 3;
   bool selectedLeft = true;
 
   @override
@@ -22,6 +23,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                 _userBio(),
                 _editProfileButton(),
                 _tabButtons(),
+                _selectedIndicator(),
               ]),
             )
           ],
@@ -78,4 +80,18 @@ class _ProfileBodyState extends State<ProfileBody> {
       ),
     );
   }
+
+  AnimatedContainer _selectedIndicator() {
+    return AnimatedContainer(
+      duration: common_animation_duration,
+      child: Container(
+        height: selectionBarHeight,
+        width: size!.width/2,
+        color: Colors.grey,
+      ),
+      alignment: selectedLeft ? Alignment.centerLeft : Alignment.centerRight,
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
 }

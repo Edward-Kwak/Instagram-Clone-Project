@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_code_split/constants/common_vars.dart';
+
+enum SelectedTab {left, right}
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -9,14 +12,17 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
+
   final double selectionBarHeight = 3;
-  bool selectedLeft = true;
+  SelectedTab _selectedTab = SelectedTab.left;
+  // bool selectedLeft = true;
+
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
         child: CustomScrollView(
-          slivers: [
+          slivers: <Widget>[
             SliverList(
               delegate: SliverChildListDelegate([
                 _username(),
@@ -25,6 +31,14 @@ class _ProfileBodyState extends State<ProfileBody> {
                 _tabButtons(),
                 _selectedIndicator(),
               ]),
+            ),
+            SliverToBoxAdapter(
+              child: GridView.count (
+                crossAxisCount: 3,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                childAspectRatio: 3,
+                children: List.generate(30, (index) => CachedNetworkImage(imageUrl: 'https://picsum.photos/id/$index/200/200')),),
             )
           ],
         )
@@ -38,20 +52,28 @@ class _ProfileBodyState extends State<ProfileBody> {
                       child: IconButton(
                         onPressed: () {
                           setState(() {
-                            selectedLeft = true;
+                            _selectedTab = SelectedTab.left;
                           });
                         },
-                        icon: ImageIcon(AssetImage('assets/images/grid.png'), color: selectedLeft? Colors.black : Colors.black26,),)
-                  ),Expanded(
+                        icon: ImageIcon(
+                          AssetImage('assets/images/grid.png'),
+                          color: _selectedTab == SelectedTab.left ? Colors.black : Colors.black26,
+                        ),
+                      )
+                  ),
+                  Expanded(
                       child: IconButton(
                         onPressed: () {
                           setState(() {
-                            selectedLeft = false;
+                            _selectedTab = SelectedTab.right;
                           });
                         },
-                        icon: ImageIcon(AssetImage('assets/images/saved.png'), color: selectedLeft? Colors.black26 : Colors.black,),)
+                        icon: ImageIcon(
+                          AssetImage('assets/images/saved.png'),
+                          color: _selectedTab == SelectedTab.right ? Colors.black26 : Colors.black,
+                        ),
+                      )
                   ),
-
                 ],
               );
   }
@@ -89,7 +111,7 @@ class _ProfileBodyState extends State<ProfileBody> {
         width: size!.width/2,
         color: Colors.grey,
       ),
-      alignment: selectedLeft ? Alignment.centerLeft : Alignment.centerRight,
+      alignment: _selectedTab == SelectedTab.left ? Alignment.centerLeft : Alignment.centerRight,
       curve: Curves.fastOutSlowIn,
     );
   }

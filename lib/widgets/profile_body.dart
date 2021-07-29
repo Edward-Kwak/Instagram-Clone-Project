@@ -15,6 +15,8 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   final double selectionBarHeight = 3;
   SelectedTab _selectedTab = SelectedTab.left;
+  double _leftPageMargin = 0;
+  double _rightPageMargin = size!.width;
   // bool selectedLeft = true;
 
 
@@ -32,17 +34,47 @@ class _ProfileBodyState extends State<ProfileBody> {
                 _selectedIndicator(),
               ]),
             ),
-            SliverToBoxAdapter(
-              child: GridView.count (
-                crossAxisCount: 3,
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                childAspectRatio: 3,
-                children: List.generate(30, (index) => CachedNetworkImage(imageUrl: 'https://picsum.photos/id/$index/200/200')),),
-            )
+            _imagesPager()
           ],
         )
     );
+  }
+
+  SliverToBoxAdapter _imagesPager() {
+    return SliverToBoxAdapter(
+            child: Stack(
+              children: [
+                AnimatedContainer(
+                  duration: common_animation_duration,
+                  transform: Matrix4.translationValues(_leftPageMargin, 0, 0),
+                  curve: Curves.fastOutSlowIn,
+                  child: GridView.count (
+                    crossAxisCount: 3,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    childAspectRatio: 1,
+                    children: List.generate(30, (index) => CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: 'https://picsum.photos/id/$index/200/200')),
+                  ),
+                ),
+                AnimatedContainer(
+                  duration: common_animation_duration,
+                  transform: Matrix4.translationValues(_rightPageMargin, 0, 0),
+                  curve: Curves.fastOutSlowIn,
+                  child: GridView.count (
+                    crossAxisCount: 3,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    childAspectRatio: 1,
+                    children: List.generate(30, (index) => CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: 'https://picsum.photos/id/${index+30}/200/200')),
+                  ),
+                ),
+              ]
+            ),
+          );
   }
 
   Row _tabButtons() {
@@ -53,6 +85,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                         onPressed: () {
                           setState(() {
                             _selectedTab = SelectedTab.left;
+                            _leftPageMargin = 0;
+                            _rightPageMargin = size!.width;
                           });
                         },
                         icon: ImageIcon(
@@ -66,6 +100,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                         onPressed: () {
                           setState(() {
                             _selectedTab = SelectedTab.right;
+                            _leftPageMargin = -size!.width;
+                            _rightPageMargin = 0;
                           });
                         },
                         icon: ImageIcon(

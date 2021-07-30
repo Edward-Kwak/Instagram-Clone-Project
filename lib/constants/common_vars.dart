@@ -8,6 +8,7 @@ const double common_padding_l = 24.0;
 
 const double common_loading_size = 160;
 const double common_profile_img_size_s = 30;
+const double common_profile_img_size_l = 80;
 
 const double common_img_icon_size_s = 16.0;
 

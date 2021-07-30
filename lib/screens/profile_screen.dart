@@ -27,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
           child: IconButton(
             onPressed: () {  },
             icon: Icon(Icons.arrow_back),)),
-      Expanded(child: Text('user', textAlign: TextAlign.center,)),
+      Expanded(child: Text('user', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),)),
     ],);
   }
 

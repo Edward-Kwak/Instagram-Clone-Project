@@ -1,6 +1,6 @@
 # Instagram Clone Project Prototype_Mk-I
 
-Cloning Instagram App, First Prototype, Mk-I.
+Cloning Instagram App, First Prototype, Mk-I. (Developed on July 30th)
 
 - Features
   - Sign in / out / Sign Up

@@ -6,7 +6,9 @@ import 'package:flutter_code_split/widgets/rounded_profile.dart';
 enum SelectedTab {left, right}
 
 class ProfileBody extends StatefulWidget {
-  const ProfileBody({Key? key}) : super(key: key);
+  final Function onMenuChanged;
+
+  const ProfileBody({Key? key, required this.onMenuChanged}) : super(key: key);
 
   @override
   _ProfileBodyState createState() => _ProfileBodyState();
@@ -20,55 +22,62 @@ class _ProfileBodyState extends State<ProfileBody> {
   double _rightPageMargin = size!.width;
   // bool selectedLeft = true;
 
-
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildListDelegate([
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(common_padding_m),
-                      child: RoundedProfile(size: common_profile_img_size_l),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(common_padding_m),
-                        child: Table(
-                          children: [
-                            TableRow(
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _appbar(),
+          Expanded(
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(common_padding_m),
+                            child: RoundedProfile(size: common_profile_img_size_l),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(common_padding_m),
+                              child: Table(
                                 children: [
-                                  _valueText('123123'),
-                                  _valueText('48942'),
-                                  _valueText('599312'),
-                                ]
+                                  TableRow(
+                                      children: [
+                                        _valueText('123123'),
+                                        _valueText('48942'),
+                                        _valueText('599312'),
+                                      ]
+                                  ),
+                                  TableRow(
+                                      children: [
+                                        _labelText('게시물'),
+                                        _labelText('팔로워'),
+                                        _labelText('팔로잉'),
+                                      ]
+                                  ),
+                                ],
+                              ),
                             ),
-                            TableRow(
-                                children: [
-                                  _labelText('게시물'),
-                                  _labelText('팔로워'),
-                                  _labelText('팔로잉'),
-                                ]
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                _username(),
-                _userBio(),
-                _editProfileButton(),
-                _tabButtons(),
-                _selectedIndicator(),
-              ]),
-            ),
-            _imagesPager()
-          ],
-        )
+                      _username(),
+                      _userBio(),
+                      _editProfileButton(),
+                      _tabButtons(),
+                      _selectedIndicator(),
+                    ]),
+                  ),
+                  _imagesPager()
+                ],
+              )
+          ),
+        ],
+      ),
     );
   }
 
@@ -107,6 +116,22 @@ class _ProfileBodyState extends State<ProfileBody> {
               ]
             ),
           );
+  }
+
+  Row _appbar() {
+    return Row(children: <Widget>[
+      SizedBox(
+          width: common_icon_width,
+          child: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back),)
+      ),
+      Expanded(child: Text('user', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),)),
+      IconButton(
+          onPressed: (){
+            widget.onMenuChanged();
+          },
+          icon: Icon(Icons.menu),
+      )
+    ],);
   }
 
   _tabSelected (SelectedTab selectedTab) {

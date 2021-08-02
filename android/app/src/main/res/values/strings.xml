@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">clone_project</string>
+    <string name="facebook_app_id">833912657551865</string>
+    <string name="fb_login_protocol_scheme">fb833912657551865</string>
+
+
+</resources>

@@ -127,6 +127,9 @@ class _HomePageState extends State<HomePage> {
 
     statuses.forEach((permission, permissionStatus) {
       if (!permissionStatus.isGranted)        permitted = false;
+      if (Platform.isIOS) {
+        permitted = true;
+      }
     });
 
     return permitted;

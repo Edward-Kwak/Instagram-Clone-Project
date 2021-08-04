@@ -35,18 +35,20 @@ class _TakePhotoState extends State<TakePhoto> {
     // if (!snapshot.hasData) return _progress;          // 이렇게 해줘야 에러가 안나는 것 같은데? Container의 child에 삼항 연산자로 적용하면 에러나는듯.
     return Consumer<CameraState>(
       builder: (context, cameraState, child) {
-
         // if (!cameraState.isReadyToTakePhoto) return _progress;
-
         return Column(
           children: <Widget>[
-            Container(
-              width: size!.width,
-              height: size!.width,
-              color: Colors.black,
-              child: (cameraState.isReadyToTakePhoto) ? _getPreview(cameraState) : _progress,
+            Flexible(
+              fit: FlexFit.loose,
+              child: Container(
+                width: size!.width,
+                height: size!.width,
+                color: Colors.black,
+                child: (cameraState.isReadyToTakePhoto) ? _getPreview(cameraState) : _progress,
+              ),
             ),
-            Expanded(
+            Flexible(
+              fit: FlexFit.tight,
               child: OutlineButton(
                 onPressed: () {
                   if (cameraState.isReadyToTakePhoto) {

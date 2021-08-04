@@ -1,21 +1,16 @@
-# Instagram Clone Project Prototype_Mk-I
+# make_feed_screen
 
-Cloning Instagram App, First Prototype, Mk-I. (Developed on July 30th)
+A new Flutter project.
 
-- Features
-  - Sign in / out / Sign Up
-  - Sign in using Facebook account
-  - Follow & Unfollow
-  - Take photo & share with followers
-  - Share from my gallery
-  - Like / Unlike
-  - Leave a comments
-  
+## Getting Started
 
+This project is a starting point for a Flutter application.
 
-And more features will be updated.
+A few resources to get you started if this is your first Flutter project:
 
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-There's no API Key included.
-
-So if you just clone this project and run it, it won't be run.
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

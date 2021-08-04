@@ -47,6 +47,11 @@
     <string>마이크 써도 댐?</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>갤러리 써도 댐?</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>

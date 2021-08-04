@@ -51,7 +51,7 @@ class _ProfileBodyState extends State<ProfileBody> with SingleTickerProviderStat
             return  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _appbar(userModelState.userModel!.username),
+                  _appbar(userName: userModelState.userModel!.username),
                   Expanded(
                     child: CustomScrollView(
                       slivers: <Widget>[
@@ -82,7 +82,6 @@ class _ProfileBodyState extends State<ProfileBody> with SingleTickerProviderStat
                                                 _labelText('팔로잉'),
                                               ]
                                           ),
-
                                         ],),
                                     ),
                                   )
@@ -105,19 +104,34 @@ class _ProfileBodyState extends State<ProfileBody> with SingleTickerProviderStat
 
   }
 
-  Row _appbar(String userName) {
-    return Row(
-      children: <Widget>[
-        SizedBox(width: 44, child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back))),
-        Expanded(child: Text(userName, style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.center,)),
-        IconButton(
-            onPressed: () {
-              widget.onMenuChanged();
-              _iconAnimationController!.status == AnimationStatus.completed ? _iconAnimationController!.reverse() : _iconAnimationController!.forward();
-            },
-            icon: AnimatedIcon(icon: AnimatedIcons.menu_close, progress: _iconAnimationController!,)),
-      ],
-    );
+  Widget _appbar({String? userName}) {
+    if (userName != null) {
+      return Row(
+        children: <Widget>[
+          SizedBox(width: 44,
+              child: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.arrow_back))),
+          Expanded(
+              child: Text(
+                userName,
+                style: TextStyle(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              )
+          ),
+          IconButton(
+              onPressed: () {
+                widget.onMenuChanged();
+                _iconAnimationController!.status == AnimationStatus.completed
+                    ? _iconAnimationController!.reverse()
+                    : _iconAnimationController!.forward();
+              },
+              icon: AnimatedIcon(icon: AnimatedIcons.menu_close,
+                progress: _iconAnimationController!,)),
+        ],
+      );
+    }
+    else
+      return TextButton.icon(onPressed: (){}, icon: Icon(Icons.error_outline), label: Text('user name is null.'));
   }
 
   Text _valueText(String value) => Text(value, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold),);

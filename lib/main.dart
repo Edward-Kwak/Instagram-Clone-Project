@@ -44,6 +44,8 @@ class MyApp extends StatelessWidget {
               _currentWidget = HomePage();
               break;
             default :
+              // _clearUserModel(context);
+              // _initUserModel(firebaseAuthState, context, _userModelState);
               _currentWidget = MyProgressIndicator();
               break;
           }
@@ -68,7 +70,6 @@ class MyApp extends StatelessWidget {
     //     userNetworkRepository.getUserModelStream(firebaseAuthState.firebaseUser!.uid)
     // .listen((user) { userModelState.userModel = user; });
     ///**************************************************************************************///
-
 
     ///************************************** Debug 성공 code **************************************///
     userModelState.currentStreamSub = userNetworkRepository.getUserModelStream(firebaseAuthState.firebaseUser!.uid).listen((user) {

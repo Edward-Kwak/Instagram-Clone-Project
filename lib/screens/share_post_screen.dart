@@ -112,18 +112,18 @@ class _SharePostScreenState extends State<SharePostScreen> {
 
   Tags _tags() {
     return Tags(
-            horizontalScroll: true,
-            itemCount: _tagItems.length,
-            itemBuilder: (index) => ItemTags(
-              title: _tagItems[index],
-              index: index,
-              activeColor: Colors.grey,
-              textActiveColor: Colors.black87,
-              borderRadius: BorderRadius.circular(4),
-              elevation: 2,
-              color: Colors.lightBlueAccent,
-            ),
-            heightHorizontalScroll: 30,
+      horizontalScroll: true,
+      itemCount: _tagItems.length,
+      itemBuilder: (index) => ItemTags(
+        title: _tagItems[index],
+        index: index,
+        activeColor: Colors.grey,
+        textActiveColor: Colors.black87,
+        borderRadius: BorderRadius.circular(4),
+        elevation: 2,
+        color: Colors.lightBlueAccent,
+      ),
+      heightHorizontalScroll: 30,
     );
   }
 

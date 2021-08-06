@@ -7,7 +7,7 @@
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.1082531164101-7ggh81is9l493uji2am4icvutttt5bsb</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDxDC7M0BIVvDVY467AYZA9H36EJ32_bHQ</string>
+	<string></string>
 	<key>GCM_SENDER_ID</key>
 	<string>1082531164101</string>
 	<key>PLIST_VERSION</key>
@@ -19,15 +19,15 @@
 	<key>STORAGE_BUCKET</key>
 	<string>instagram-clone-33c5d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1082531164101:ios:ca78c3359b6a4a2f8165ac</string>
 </dict>

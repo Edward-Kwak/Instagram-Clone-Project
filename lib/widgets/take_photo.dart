@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:make_feed_screen/constants/common_size.dart';
@@ -24,21 +23,16 @@ class TakePhoto extends StatefulWidget {
 
 class _TakePhotoState extends State<TakePhoto> {
 
-  // late CameraController _cameraController;
-
-  // 캠 컨트롤러를 null 표시자로 해도 문제 없는듯함. 문제 생기면, ?표시자 말고, late로 하자.
-
   Widget _progress = MyProgressIndicator();
 
   @override
   Widget build(BuildContext context) {
-    // if (!snapshot.hasData) return _progress;          // 이렇게 해줘야 에러가 안나는 것 같은데? Container의 child에 삼항 연산자로 적용하면 에러나는듯.
     return Consumer<CameraState>(
       builder: (context, cameraState, child) {
-        // if (!cameraState.isReadyToTakePhoto) return _progress;
         return Column(
           children: <Widget>[
             Flexible(
+              flex: 2,
               fit: FlexFit.loose,
               child: Container(
                 width: size!.width,
@@ -105,45 +99,45 @@ class _TakePhotoState extends State<TakePhoto> {
   }
 
 
-  /************  SharePostScreen 변경 전 코드 ************/
-  // void _attemptTakePhoto(CameraState cameraState, BuildContext context) async{
-  //   final String timeInMillis = DateTime.now().millisecondsSinceEpoch.toString();
-  //
-  //   try {
-  //     // final path = join( (await getTemporaryDirectory()).path, "$timeInMillis.png" );
-  //     // await cameraState.controller.takePicture(path)
-  //
-  //     final XFile takenPic = await cameraState.controller.takePicture();
-  //     final String path = takenPic.path;
-  //
-  //     print("Taken Picture path is : $path");
-  //
-  //     File imageFile = File(path);
-  //
-  //     Navigator.of(context).push(MaterialPageRoute(builder: (_) => SharePostScreen(imageFile)));
-  //
-  //   } catch(e) {
-  //
-  //   }
-  // }
-  /************  SharePostScreen 변경 전 코드 ************/
+/************  SharePostScreen 변경 전 코드 ************/
+// void _attemptTakePhoto(CameraState cameraState, BuildContext context) async{
+//   final String timeInMillis = DateTime.now().millisecondsSinceEpoch.toString();
+//
+//   try {
+//     // final path = join( (await getTemporaryDirectory()).path, "$timeInMillis.png" );
+//     // await cameraState.controller.takePicture(path)
+//
+//     final XFile takenPic = await cameraState.controller.takePicture();
+//     final String path = takenPic.path;
+//
+//     print("Taken Picture path is : $path");
+//
+//     File imageFile = File(path);
+//
+//     Navigator.of(context).push(MaterialPageRoute(builder: (_) => SharePostScreen(imageFile)));
+//
+//   } catch(e) {
+//
+//   }
+// }
+/************  SharePostScreen 변경 전 코드 ************/
 
 
 
-  /************  직접 디버깅해서 성공한 코드 _cameraController를 late로 선언했을 때. ************/
-  // Widget _getPreview(AsyncSnapshot<List<CameraDescription>> cameras) {
-  //   _cameraController = CameraController(cameras.data![0], ResolutionPreset.medium);
-  //
-  //   return FutureBuilder(
-  //     future: _cameraController.initialize(),
-  //     builder: (context, snapshot) {
-  //       if(snapshot.connectionState == ConnectionState.done && _cameraController.value.isInitialized)
-  //         return CameraPreview(_cameraController);
-  //       else
-  //         return _progress;
-  //     },
-  //   );
-  // } // End of _getPreview
-  /************  직접 디버깅해서 성공한 코드 _cameraController를 late로 선언했을 때. ************/
+/************  직접 디버깅해서 성공한 코드 _cameraController를 late로 선언했을 때. ************/
+// Widget _getPreview(AsyncSnapshot<List<CameraDescription>> cameras) {
+//   _cameraController = CameraController(cameras.data![0], ResolutionPreset.medium);
+//
+//   return FutureBuilder(
+//     future: _cameraController.initialize(),
+//     builder: (context, snapshot) {
+//       if(snapshot.connectionState == ConnectionState.done && _cameraController.value.isInitialized)
+//         return CameraPreview(_cameraController);
+//       else
+//         return _progress;
+//     },
+//   );
+// } // End of _getPreview
+/************  직접 디버깅해서 성공한 코드 _cameraController를 late로 선언했을 때. ************/
 
 }

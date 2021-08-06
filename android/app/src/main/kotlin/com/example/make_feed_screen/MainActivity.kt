@@ -1,4 +1,4 @@
-package com.example.flutter_code_split
+package com.example.make_feed_screen
 
 import io.flutter.embedding.android.FlutterActivity
 

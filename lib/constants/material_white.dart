@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const int _whitePrimaryValue = 0xFFFFFFFF;
+const int _whitePrimaryValue = 0xFFFFFFFF;  //  white. (0x A R G B)
 
 const MaterialColor white = MaterialColor(
   _whitePrimaryValue,

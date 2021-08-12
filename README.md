@@ -1,4 +1,4 @@
-bi# Instagram Clone Project
+# Instagram Clone Project
 <h3>Instagram Clone Project</h3>
 Cloning Instagram App, First Prototype, Mk-I. (Developed on July 30th)
 <br></br>

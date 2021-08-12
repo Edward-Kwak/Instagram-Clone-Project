@@ -6,11 +6,11 @@ Cloning Instagram App, First Prototype, Mk-I. (Developed on July 30th)
 # Demo Video
   - Android
   <br></br>
-  <img src="demos/instagram clone project - Android.gif></img>
+  <img src="demos/instagram clone project - Android.gif"></img>
   <br></br>
   - IOS
   <br></br>
-  <img src="demos/instagram clone project - IOS.gif></img>
+  <img src="demos/instagram clone project - IOS.gif"></img>
   <br></br>
 
 # Features
